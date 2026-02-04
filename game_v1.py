@@ -4,7 +4,7 @@ import random
 answer = random.randint(1,100)
 count = 0
 while True :
-  user_num = input('guess answer ? ')
+  user_num = input('guess answer : ')
   user_num = user_num.strip()
   try :
     user_num = int(user_num)
