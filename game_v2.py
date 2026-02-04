@@ -1,20 +1,15 @@
 import random
-while True :
-  low = input('Lowest : ')
-  low = low.strip()
-  try:
-    low = int(low)
-    break
-  except ValueError:
-    print('Value Error')
-while True :  
-  high = input('Highest : ')
-  high = high.strip()
-  try:
-    high = int(high)
-    break
-  except ValueError:
-    print('Value Error')
+def safe_num(text) :
+  while True :
+    number = input(text)
+    number = number.strip()
+    try :
+      number = int(number)
+      return number
+    except ValueError :
+      print('Value Error')
+low = safe_num('Lowest : ')
+high = safe_num('Highest : ')
 if low > high :
   print('Value Error')
 else :
