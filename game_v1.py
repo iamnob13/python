@@ -8,17 +8,15 @@ while True :
   user_num = user_num.strip()
   try :
     user_num = int(user_num)
+    count = count + 1
     if user_num == answer :
       print('yeahhhh, Right')
-      count = count + 1
       break
     elif user_num > answer :
       print('Kamtar')
-      count = count + 1
     elif user_num < answer :
       print('Bishtar')  
-      count = count + 1
-  except :
+  except ValueError:
     print('choose " number "')
 print('Total guess : ',count)
 print('answer : ',answer)
