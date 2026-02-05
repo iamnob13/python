@@ -27,7 +27,7 @@ def buy(text) :
         break
       else :
         print('Sold Out')
-        break 
+      break 
     else :
       print(f'We do not have "{name}"')    
 
@@ -48,7 +48,7 @@ def sharj(text) :
   print('New list : ')
   see()      
 
-count = 0
+#count = 0
 while True :
   answer = get_answer('See /Buy /Sharj /Exit : ')
   if answer == 'see' :
@@ -87,4 +87,4 @@ while True :
     print('Wrong answer')
 
 print('Thank you, BYE')
-print(count)
+#print(count)
