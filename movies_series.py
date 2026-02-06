@@ -11,15 +11,25 @@ my_archive = {
 #print(my_archive['Breaking_bad']['Is_series'])
 #========NOTHING==================#
 
-
+print('==========')
 for i in my_archive.keys() :
   imdb = my_archive[i]['Rating']
   if imdb >= 8.6 :
     print(f'{i} IMDB ===> {imdb}')
 
 
+print('==========')
 print('Movies : ')
+
 for i in my_archive.keys() :
   movie = my_archive[i]['Is_series']
   if movie ==False :
-    print(f'{i}')
+    print(i)
+
+print('==========')
+print('Action : ')
+for i in my_archive.keys() :
+  genre = my_archive[i]['Genres']
+  if 'Action' in genre :
+    print(i)
+print('==========')
