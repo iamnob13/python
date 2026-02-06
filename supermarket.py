@@ -1,9 +1,9 @@
 grocery = {
-  'Apple':5,
-  'Orange':3,
-  'Lemon':7,
-  'Banana':13,
-  'Milk':0    
+  'Apple': {'count':5,'price':1},
+  'Orange': {'count':3,'price':2},
+  'Lemon': {'count':7,'price':4},
+  'Banana': {'count':13,'price':8},
+  'Milk': {'count':0,'price':10}
 }
 cart = {}
 
@@ -24,14 +24,15 @@ def buy(text) :
     name = input(text)
     name = name.title().strip()
     if name in grocery.keys() :
-      if grocery[name] >= 1 :  
-        grocery[name] = grocery[name] -1
+      if grocery[name]['count'] >= 1 :  
+        grocery[name]['count'] = grocery[name]['count'] -1
         print('New list : ')
         see()
         if name in cart.keys():
-          cart[name] = cart[name] + 1
+          cart[name]['count'] = cart[name]['count'] + 1
+          cart[name]['price'] = cart[name]['price'] + grocery[name]['price']
         else :
-          cart[name] = 1  
+          cart[name] = {'count':1 , 'price': grocery[name]['price']}
         return True
       else :
         print('Sold Out')
@@ -52,9 +53,16 @@ def sharj(text) :
     except ValueError :
       print('Value Error')    
   if name in grocery.keys() :
-    grocery[name] = grocery[name] + number
+    grocery[name]['count'] = grocery[name]['count'] + number
   else :
-    grocery[name] = number
+    while True :
+      gheymat = input('Price : ')
+      try :
+        gheymat = int(gheymat)
+        break
+      except ValueError:
+        print('Value error')  
+    grocery[name] = {'count':number , 'price':gheymat}  
   print('New list : ')
   see()
   return True
@@ -75,7 +83,8 @@ while True :
     if javab == 'y' :
       continue
     elif javab == 'n' :
-      break
+      #break
+      pass
     else :
       print('Wrong answer')
       continue  
@@ -98,8 +107,10 @@ while True :
   else :
     print('Wrong answer')
 
+print('=====================')
 print('Thank you')
 print('Cart : ')
 for name,number in cart.items() :
-  print(f'{name} : {number}')
+  print(f"{name} : {number}$")
 print('BYE')
+print('=====================')
