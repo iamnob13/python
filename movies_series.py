@@ -1,7 +1,7 @@
 my_archive = {
   ######### Genres should bi in list & Rating should be integer چون مثلا فیلمای بالاتر از 9 
   'Breaking_bad' : {'Title':'Breaking bad','Year':2008,'Genres':['Drama'],'Rating':9.5,'Is_series':True},
-  'Inception' : {'Title':'Inception','Year':2010,'Genres':['Sci_fi','Action'],'Rating':8.8,'Is_series':False},
+  'Inception' : {'Title':'Inception','Year':2010,'Genres':['Sci_Fi','Action'],'Rating':8.8,'Is_series':False},
   'Whiplash' : {'Title':'Whiplash','Year':2014,'Genres':['Drama','Indie'],'Rating':8.5,'Is_series':False}
 }
 #========NOTHING==================#
@@ -26,10 +26,19 @@ for i in my_archive.keys() :
   if movie ==False :
     print(i)
 
+
+def get_genre (answer) :
+  answer = answer.title().strip()
+  return answer
+count = 0
 print('==========')
-print('Action : ')
-for i in my_archive.keys() :
-  genre = my_archive[i]['Genres']
-  if 'Action' in genre :
-    print(i)
+print('user genre : ')
+answer = input('Choose genre : ')
+user_genre = get_genre(answer)
+for key,value in my_archive.items() :
+  if user_genre in value['Genres'] :
+    print(key)
+    count += 1
+if count == 0 :
+  print('None') 
 print('==========')
