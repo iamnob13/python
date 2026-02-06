@@ -5,6 +5,10 @@ grocery = {
   'Banana':13,
   'Milk':0    
 }
+cart = {}
+
+
+
 def get_answer(text) :
   answer = input(text)
   answer = answer.lower().strip()
@@ -16,7 +20,6 @@ def see() :
     print(f'{name} : {number}')
 
 def buy(text) :
-  count = 0
   while True :
     name = input(text)
     name = name.title().strip()
@@ -25,13 +28,18 @@ def buy(text) :
         grocery[name] = grocery[name] -1
         print('New list : ')
         see()
-        count += count + 1
-        return count
+        if name in cart.keys():
+          cart[name] = cart[name] + 1
+        else :
+          cart[name] = 1  
+        return True
       else :
         print('Sold Out')
-        break 
+        return False
     else :
-      print(f'We do not have "{name}"')    
+      print(f'We do not have "{name}"')
+      return False
+          
 
 def sharj(text) :
   name = input(f'{text} /==> name : ')
@@ -49,6 +57,9 @@ def sharj(text) :
     grocery[name] = number
   print('New list : ')
   see()
+  return True
+
+
 
 while True :
   answer = get_answer('See /Buy /Sharj /Exit : ')
@@ -87,4 +98,8 @@ while True :
   else :
     print('Wrong answer')
 
-print('Thank you, BYE')
+print('Thank you')
+print('Cart : ')
+for name,number in cart.items() :
+  print(f'{name} : {number}')
+print('BYE')
