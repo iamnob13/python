@@ -16,3 +16,10 @@ for i in my_archive.keys() :
   imdb = my_archive[i]['Rating']
   if imdb >= 8.6 :
     print(f'{i} IMDB ===> {imdb}')
+
+
+print('Movies : ')
+for i in my_archive.keys() :
+  movie = my_archive[i]['Is_series']
+  if movie ==False :
+    print(f'{i}')
