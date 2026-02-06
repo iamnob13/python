@@ -16,6 +16,7 @@ def see() :
     print(f'{name} : {number}')
 
 def buy(text) :
+  count = 0
   while True :
     name = input(text)
     name = name.title().strip()
@@ -24,10 +25,11 @@ def buy(text) :
         grocery[name] = grocery[name] -1
         print('New list : ')
         see()
-        break
+        count += count + 1
+        return count
       else :
         print('Sold Out')
-      break 
+        break 
     else :
       print(f'We do not have "{name}"')    
 
@@ -46,9 +48,8 @@ def sharj(text) :
   else :
     grocery[name] = number
   print('New list : ')
-  see()      
+  see()
 
-#count = 0
 while True :
   answer = get_answer('See /Buy /Sharj /Exit : ')
   if answer == 'see' :
@@ -57,7 +58,7 @@ while True :
     continue
 
   elif answer == 'buy' :
-    buy('Buy What : ')
+    total_buy = buy('Buy What : ')
     javab = input('Continue y/n : ')
     javab = javab.lower().strip()
     if javab == 'y' :
@@ -69,7 +70,7 @@ while True :
       continue  
 
   elif answer == 'sharj' :
-    sharj('Name & number : ')
+    total_sharj = sharj('Name & number : ')
     javab = input('Continue y/n : ')
     javab = javab.lower().strip()
     if javab == 'y' :
@@ -87,4 +88,3 @@ while True :
     print('Wrong answer')
 
 print('Thank you, BYE')
-#print(count)
