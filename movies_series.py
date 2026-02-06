@@ -4,9 +4,15 @@ my_archive = {
   'Inception' : {'Title':'Inception','Year':2010,'Genres':['Sci_fi','Action'],'Rating':8.8,'Is_series':False},
   'Whiplash' : {'Title':'Whiplash','Year':2014,'Genres':['Drama','Indie'],'Rating':8.5,'Is_series':False}
 }
+#========NOTHING==================#
 #print(my_archive['Whiplash']['Year'])
 #print(my_archive['Whiplash']['Genres'][0])
 #my_archive['Breaking_bad']['Is_series'] = False
 #print(my_archive['Breaking_bad']['Is_series'])
+#========NOTHING==================#
 
 
+for i in my_archive.keys() :
+  imdb = my_archive[i]['Rating']
+  if imdb >= 8.6 :
+    print(f'{i} IMDB ===> {imdb}')
