@@ -1,3 +1,4 @@
+# یه مینی پروژه واسه تمرین دیکشنری و دیکشنری تودرتو | دیدن لیست   خرید   شارژ  |try / except 
 grocery = {
   'Apple': {'count':5,'price':1},
   'Orange': {'count':3,'price':2},
