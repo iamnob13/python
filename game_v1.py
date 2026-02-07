@@ -1,5 +1,4 @@
-# computer pick a random number between (1,100)
-# we should guess the number
+#یه بازی کوچیک که سیستم عدد ذهنیتون رو با راهنمایی پیدا میکنه
 import random
 answer = random.randint(1,100)
 count = 0
