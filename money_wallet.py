@@ -1,11 +1,22 @@
 # یه پروژه واسه تمرین دیکشنری ها | مدیریت پول و کیف پول | try /except | function 
+import json
+
 user = {
   'Ariya': {'Age':18,'Balance':500},
   'Gilda': {'Age':20,'Balance':100},
   'Mamad': {'Age':13,'Balance':0}
 }
-#print (user.get('Ariya','none')['Age'])
 
+def save () :
+  with open('Bank.json','w') as my_file :
+    json.dump(user,my_file,indent=4)
+    return True
+try:
+  with open('Bank.json','r') as file :
+    user = json.load(file)
+except FileNotFoundError :
+  save()
+    
 def deposit (name,amount):
   if name in user.keys() :
     while True :
@@ -19,7 +30,6 @@ def deposit (name,amount):
   else:
     print('User not found')  
     return False
-
 
 def transfer(tra,rec,amount) :
   if tra in user.keys() :
@@ -45,16 +55,16 @@ def transfer(tra,rec,amount) :
     print('User not found')
     return False 
 
-
+  
 name = input('Name :' )
 name = name.title().strip()
 amount = input('Amount : ')
 javab = deposit(name,amount)
 if javab :
   print('Deposit successful')
+  save()
 else :
   print('Deposit failed')
-
 
 tra = input('Sender : ')  
 tra = tra.title().strip()
@@ -64,6 +74,7 @@ amount = input('Amount : ')
 javab = transfer(tra,rec,amount)
 if javab :
   print('Transfer successful')
+  save()
 else :
   print('Transfer failed')
 for key,value in user.items() :
