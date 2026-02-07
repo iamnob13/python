@@ -1,3 +1,4 @@
+# همون بازی ورژن یک هست فقط ایندفعه شما باید عدد رندوم سیستم رو حدس بزنید
 import random
 def safe_num(text) :
   while True :
