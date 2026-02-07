@@ -16,7 +16,11 @@ try:
     user = json.load(file)
 except FileNotFoundError :
   save()
-    
+
+def log (a) :
+  with open('log.txt','a') as log :
+    log.write(a + '\n')
+
 def deposit (name,amount):
   if name in user.keys() :
     while True :
@@ -24,6 +28,8 @@ def deposit (name,amount):
         amount = float(amount)
         user[name]['Balance'] += amount
         print(f'{name} ==> Balance : {user[name]['Balance']}')
+        a = f'{name} deposited {amount}$'
+        log(a)
         return True
       except ValueError:
         print('Value Error')  
@@ -38,14 +44,20 @@ def transfer(tra,rec,amount) :
         amount = float(amount)
         mojodi = user[tra]['Balance']
         if mojodi >= amount :
-          user[tra]['Balance'] = user[tra]['Balance'] - amount
-
           if rec in user.keys() :
+            user[tra]['Balance'] = user[tra]['Balance'] - amount
             user[rec]['Balance'] += amount
+            a = f'{tra} transferred {amount}$ to {rec}'
+            log(a)
             return True
           else :
-            user[rec] = {'Age':0,'Balance':amount}  
-            return True
+            final = con(rec)
+            if final :
+              user[rec] = {'Age':0,'Balance':amount}  
+              log(a)
+              return True
+            else :
+              return False
         else :
           print('Not enough balance')
           return False   
@@ -54,28 +66,41 @@ def transfer(tra,rec,amount) :
   else :
     print('User not found')
     return False 
+def con(text) :
+  while True :
+    con = input(f'{text} y/n : ')
+    con = con.lower().strip()
+    if con == 'y' :
+      return True
+    elif con == 'n' :
+      return False
 
-  
-name = input('Name :' )
-name = name.title().strip()
-amount = input('Amount : ')
-javab = deposit(name,amount)
-if javab :
-  print('Deposit successful')
-  save()
-else :
-  print('Deposit failed')
+final_con = con('Deposit')  
+if final_con :
+  name = input('Name :' )
+  name = name.title().strip()
+  amount = input('Amount : ')
+  javab = deposit(name,amount)
+  if javab :
+    print('Deposit successful')
+    save()
+  else :
+    print('Deposit failed')
 
-tra = input('Sender : ')  
-tra = tra.title().strip()
-rec = input('Receiver : ')
-rec = rec.title().strip()
-amount = input('Amount : ')
-javab = transfer(tra,rec,amount)
-if javab :
-  print('Transfer successful')
-  save()
-else :
-  print('Transfer failed')
+final_con = con('Transfer')
+if final_con :
+  tra = input('Sender : ')  
+  tra = tra.title().strip()
+  rec = input('Receiver : ')
+  rec = rec.title().strip()
+  amount = input('Amount : ')
+  javab = transfer(tra,rec,amount)
+  if javab :
+    print('Transfer successful')
+    save()
+  else :
+    print('Transfer failed')
+print('===================')
 for key,value in user.items() :
-  print(key,value)
+  print(f'{key},{value}$')
+print('===================finished')
