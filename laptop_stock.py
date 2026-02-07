@@ -1,3 +1,4 @@
+# just a little dict
 laptop_stock = {
   'Acer':'100$',
   'Apple':'200$',
