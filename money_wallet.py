@@ -74,6 +74,16 @@ def con(text) :
       return True
     elif con == 'n' :
       return False
+    
+#def show_history () :
+  with open('log.txt','r') as show :
+    json.load(show)
+    show.write(show)
+    history = show.write()
+    return history
+
+
+
 
 final_con = con('Deposit')  
 if final_con :
