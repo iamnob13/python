@@ -1,3 +1,4 @@
+# یه پروژه واسه تمرین دیکشنری ها | مدیریت پول و کیف پول | try /except | function 
 user = {
   'Ariya': {'Age':18,'Balance':500},
   'Gilda': {'Age':20,'Balance':100},
