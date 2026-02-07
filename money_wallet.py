@@ -5,16 +5,13 @@ user = {
 }
 #print (user.get('Ariya','none')['Age'])
 
-def deposit (text):
-  name = input(text)
-  name = name.title().strip()
+def deposit (name,amount):
   if name in user.keys() :
     while True :
-      amount = input('Amount : ')
       try :
         amount = float(amount)
         user[name]['Balance'] += amount
-        print(f'{name} ==> Balance : {user.get(name)['Balance']}')
+        print(f'{name} ==> Balance : {user[name]['Balance']}')
         return True
       except ValueError:
         print('Value Error')  
@@ -23,14 +20,9 @@ def deposit (text):
     return False
 
 
-def transfer(text) :
-  tra = input(text)
-  tra = tra.title().strip()
+def transfer(tra,rec,amount) :
   if tra in user.keys() :
-    rec = input('Receiver : ')
-    rec = rec.title().strip()
     while True:
-      amount = input('Amount : ')
       try :
         amount = float(amount)
         mojodi = user[tra]['Balance']
@@ -41,7 +33,7 @@ def transfer(text) :
             user[rec]['Balance'] += amount
             return True
           else :
-            user[rec] = {'Balance':amount}  
+            user[rec] = {'Age':0,'Balance':amount}  
             return True
         else :
           print('Not enough balance')
@@ -53,14 +45,22 @@ def transfer(text) :
     return False 
 
 
-
-javab = deposit('Name : ')
+name = input('Name :' )
+name = name.title().strip()
+amount = input('Amount : ')
+javab = deposit(name,amount)
 if javab :
   print('Deposit successful')
 else :
   print('Deposit failed')
 
-javab = transfer('Sender : ')
+
+tra = input('Sender : ')  
+tra = tra.title().strip()
+rec = input('Receiver : ')
+rec = rec.title().strip()
+amount = input('Amount : ')
+javab = transfer(tra,rec,amount)
 if javab :
   print('Transfer successful')
 else :
