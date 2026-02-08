@@ -21,3 +21,35 @@ try:
   print('Update done')
 except FileNotFoundError:
   print('File Not Found Error')
+
+
+# [
+#     {
+#         "id": 1,
+#         "name": "Laptop",
+#         "price": 1320.0,
+#         "count": 5,
+#         "category": "electronics"
+#     },
+#     {
+#         "id": 2,
+#         "name": "Mouse",
+#         "price": 27.5,
+#         "count": 0,
+#         "category": "electronics"
+#     },
+#     {
+#         "id": 3,
+#         "name": "Keyboard",
+#         "price": 88.0,
+#         "count": 10,
+#         "category": "electronics"
+#     },
+#     {
+#         "id": 4,
+#         "name": "Bread",
+#         "price": 2,
+#         "count": 50,
+#         "category": "food"
+#     }
+# ]
