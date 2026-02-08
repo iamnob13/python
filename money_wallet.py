@@ -75,13 +75,17 @@ def con(text) :
     elif con == 'n' :
       return False
     
-#def show_history () :
-  with open('log.txt','r') as show :
-    json.load(show)
-    show.write(show)
-    history = show.write()
-    return history
-
+def show_history () :
+  try:
+    with open('log.txt','r') as show :
+      line = show.readlines()
+      if not line :
+        print('File is empty')
+      else :    
+        for i in line :
+          print(i.strip())
+  except FileNotFoundError:
+    print('File not founded')
 
 
 
@@ -114,3 +118,7 @@ print('===================')
 for key,value in user.items() :
   print(f'{key},{value}$')
 print('===================finished')
+
+show = con('See history')
+if show :  
+  show_history()  
