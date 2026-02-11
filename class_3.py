@@ -28,7 +28,10 @@ class Classroom :
     grade_list = []
     for i in self.students :
       grade_list.append(i.grade)
-    top = max(grade_list)
+    if grade_list != [] :
+      top = max(grade_list)
+    else :
+      print('No Student')
     for i in self.students :
       if top == i.grade :
         top_name = i.name
